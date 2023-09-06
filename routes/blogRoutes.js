@@ -35,8 +35,6 @@ router.post('/blog/:userid/:blogTitle', async (req, res) => {
 router.patch('/blog/:userid/:blogTitle', async (req, res) => {
     console.log(req.body);
     console.log(req.params);
-    console.log("patchhhhh");
-
     const newBlogBody = req.body.blogBody;
     const newBlogTitle = req.body.blogTitle;
 

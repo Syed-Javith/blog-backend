@@ -6,13 +6,15 @@ const router = express.Router();
 router.post('/auth/login',(req,res)=>{
     const {username , password} = req.body;
 
+    console.log(username + " " + password);
+
     user.findOne({ username : username , password : password } )
     .then((result) => {
         const user = result;
         console.log(result);
         if(user === null ){
             console.log("not");
-            res.status(401).send({ message : "user not found" })
+            res.status(401).send({ message : "user not found" , isUserFound : false })
         }else{
             console.log("logged");
             user.loggedIn = true;
