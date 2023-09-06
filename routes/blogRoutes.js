@@ -19,9 +19,9 @@ router.get('/blog/', async (req, res) => {
 })
 
 router.post('/blog/:userid/:blogTitle', async (req, res) => {
-    console.log(req.body);
-    console.log(req.params);
-    console.log("postinggggggggg");
+    // console.log(req.body);
+    // console.log(req.params);
+    // console.log("postinggggggggg");
 
     const newBlog = new blog({
         userid: req.params.userid,
