@@ -6,12 +6,10 @@ const router = express.Router();
 
 
 router.get('/blog/', async (req, res) => {
-    console.log("gettinggggggg");
-
     await blog.find({})
         .then((result) => {
-            console.log(result);
-            res.status(200).send(result.data);
+            // console.log(result);
+            res.status(200).send(result);
         }).catch((err) => {
             console.log(err);
             res.status(400).send(err);
@@ -19,10 +17,6 @@ router.get('/blog/', async (req, res) => {
 })
 
 router.post('/blog/:userid/:blogTitle', async (req, res) => {
-    // console.log(req.body);
-    // console.log(req.params);
-    // console.log("postinggggggggg");
-
     const newBlog = new blog({
         userid: req.params.userid,
         blogTitle: req.params.blogTitle,
