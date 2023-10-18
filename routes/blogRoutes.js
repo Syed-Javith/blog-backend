@@ -9,7 +9,7 @@ router.get('/blog/', async (req, res) => {
     // console.log(req);
     await blog.find({})
         .then((result) => {
-            // console.log(result);
+            
             
             res.status(200).send(result);
         }).catch((err) => {
