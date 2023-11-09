@@ -1,5 +1,7 @@
 const express = require('express');
-const blog = require('../models/blogsModel');
+const {
+    blog
+} = require('../models/blogsModel');
 
 
 const router = express.Router();
@@ -9,8 +11,6 @@ router.get('/blog/', async (req, res) => {
     // console.log(req);
     await blog.find({})
         .then((result) => {
-            
-            
             res.status(200).send(result);
         }).catch((err) => {
             console.log(err);
@@ -58,12 +58,12 @@ router.patch('/blog/:userid/:blogTitle', async (req, res) => {
 
 });
 
-router.delete('/blog/:userid/:blogTitle', (req, res) => {
+router.delete('/blog/:userid/:blogTitle', async (req, res) => {
     console.log(req.body);
     console.log(req.params);
     console.log("deleteee");
 
-    blog.deleteOne({
+    await blog.deleteOne({
             userid: req.params.userid,
             blogTitle: req.params.blogTitle
         })
@@ -74,6 +74,5 @@ router.delete('/blog/:userid/:blogTitle', (req, res) => {
         });
 
 })
-
 
 module.exports = router;

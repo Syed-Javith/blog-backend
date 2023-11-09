@@ -11,6 +11,7 @@ const blogRoutes = require('./routes/blogRoutes');
 const corsMiddleware = require('./middlewares/corsMiddleware');
 const authenticateRoutes = require('./routes/authenticateRoutes');
 const sessionMiddleware = require('./middlewares/sessionMiddleware');
+const userRoutes = require('./routes/userRoutes')
 
 app.use(express.json());
 app.use(staticMiddleware);
@@ -22,6 +23,7 @@ connectToMongo();
 
 app.use('/',blogRoutes);
 app.use('/',authenticateRoutes);
+app.use('/',userRoutes);
 
 app.listen(5000,()=>{
     console.log("server started at 5000");
